@@ -3,8 +3,8 @@
 :root {
     --main-color: #1992d4;
     --main-color-lighter: #20b1ff;
-    --grey-color: #adb5bd;
-    --white-color: #fdfdff;
+    --grey-color: #e2e8f0;
+    --white-color: #ffffff;
     --dark-font-color:#0a100d;
     --light-font-color: #5e6472;
     --main-font: 'Quicksand', sans-serif;
@@ -32,8 +32,108 @@ body {
 }
 
 .header {
-    background-color: pink;
+    background-color: var(--white-color);
     grid-column: 2 / 3;
+    box-shadow: 0px 1px 5px black;
+    z-index: 10;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.header .navbar {    
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px;
+}
+
+.header .navbar .search {
+    width: 75%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header .navbar .search input {
+    width: 100%;
+    height: 30px;
+    border-radius: 100px;
+    background-color: var(--grey-color);
+}
+
+
+.header .navbar .profile {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 30px;
+    margin-left: 100px;
+}
+
+.header .navbar .profile .picture {
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    background-image: url(images/panda.jpg);
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header .navbar .profile .user-name {
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.header .profile-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px 20px 50px;
+}
+
+.header .profile-info .user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.header .profile-info .user .picture {
+    background-image:url(images/panda.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+}
+
+.header .profile-info .user .user-id {
+    font-weight: 900;
+    font-size: 0.9rem;
+    line-height: 25px;
+}
+
+.header .profile-info .user .user-id span{
+    font-size: 1.2rem;
+}
+
+.header .profile-info .buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap:30px;
+}
+
+.header .profile-info .buttons-container button {
+    background-color: var(--main-color);
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 900;
+    color: var(--white-color);
+
+    
 }
 
 .sidebar {
@@ -55,6 +155,7 @@ body {
         "support"
         "privacy"
     ;
+    z-index: 20;
 }
 
 
