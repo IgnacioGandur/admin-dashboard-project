@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap');
+
+:root {
+    --main-color: #1992d4;
+    --main-color-lighter: #20b1ff;
+    --grey-color: #adb5bd;
+    --white-color: #fdfdff;
+    --dark-font-color:#0a100d;
+    --light-font-color: #5e6472;
+    --main-font: 'Quicksand', sans-serif;
+}
+
+* {
+    border: 1px solid red;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--main-font);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 200px 1fr;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.header {
+    background-color: pink;
+    grid-column: 2 / 3;
+}
+
+.sidebar {
+    background-color: var(--main-color);
+    grid-row: 1 / 3;
+    display: grid;
+    grid-template-rows: 100px repeat(11, 50px);
+    grid-template-areas:
+        "dashboard"
+        "........."
+        "home"
+        "profile"
+        "messages"
+        "history"
+        "tasks"
+        "communities"
+        "........."
+        "settings"
+        "support"
+        "privacy"
+    ;
+}
+
+
+.sidebar > .dashboard {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    align-items: center;
+    padding: 0 0 0 15px    
+}
+
+
+.sidebar .dashboard p {
+    font-size: 1.8rem;
+    padding: 0 0 0 20px
+}
+
+.sidebar .dashboard .icon {
+    width: 60px;
+    height: 60px;
+}
+
+.sidebar div {
+    transition: all 100ms ease-in-out;
+}
+
+.sidebar > div:not(div.dashboard) {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    align-items: center;
+    padding: 0 0 0 30px;
+}
+
+.sidebar div:not(:nth-child(2)):not(:nth-child(9)):hover {
+    cursor: pointer;
+    background-color: var(--main-color-lighter);
+}
+
+.sidebar div:not(:nth-child(2)):not(:nth-child(9)):active {
+    scale: 0.9;
+}
+
+
+.sidebar  p {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+
+
+
+.content {
+    background-color: slateblue;
+    grid-column: 2 / 3;
+}
