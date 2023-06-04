@@ -5,13 +5,11 @@
     --main-color-lighter: #20b1ff;
     --grey-color: #e2e8f0;
     --white-color: #ffffff;
-    --dark-font-color:#0a100d;
     --light-font-color: #5e6472;
     --main-font: 'Quicksand', sans-serif;
 }
 
 * {
-    border: 1px solid red;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -19,8 +17,6 @@
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
     display: grid;
     grid-template-columns: 300px 1fr;
     grid-template-rows: 200px 1fr;
@@ -29,6 +25,7 @@ body {
 .icon {
     width: 30px;
     height: 30px;
+    flex-shrink: 0;
 }
 
 .header {
@@ -67,7 +64,6 @@ body {
     cursor: pointer;
 }
 
-
 .header .navbar .search input {
     width: 100%;
     height: 30px;
@@ -75,6 +71,7 @@ body {
     background-color: var(--grey-color);
     outline: none;
     padding: 10px;
+    border: none;
 }
 
 .header .navbar .search input:focus {
@@ -90,22 +87,23 @@ body {
 }
 
 .header .navbar .profile .picture {
+    border-radius: 100%;
     width: 75px;
     height: 75px;
-    border-radius: 100%;
-    background-image: url(images/panda.jpg);
+    background-image: url(images/whale.jpg);
     background-size: cover; 
     background-repeat: no-repeat;
     background-position: center;
+    flex-shrink: 0;
 }
 
+/* Targets both navbar and profile pictures */
 .picture {
     transition: all 100ms ease-in-out;
 }
 
 .picture:hover {
     scale: 1.2;
-    box-shadow: 0 0 10px 5px grey;
 }
 
 .picture:active {
@@ -127,7 +125,6 @@ body {
     scale: 0.9;
 }
 
-
 .header .profile-info {
     display: flex;
     justify-content: space-between;
@@ -143,13 +140,14 @@ body {
 }
 
 .header .profile-info .user .picture {
-    background-image:url(images/panda.jpg);
+    background-image:url(images/whale.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 80px;
     height: 80px;
     border-radius: 100%;
+    flex-shrink: 0;
 }
 
 .header .profile-info .user .user-id {
@@ -184,7 +182,6 @@ body {
     cursor: pointer;
 }
 
-
 .sidebar {
     background-color: var(--main-color);
     grid-row: 1 / 3;
@@ -207,14 +204,12 @@ body {
     z-index: 20;
 }
 
-
 .sidebar > .dashboard {
     display: grid;
     grid-template-columns: 50px 1fr;
     align-items: center;
     padding: 0 0 0 15px    
 }
-
 
 .sidebar .dashboard p {
     font-size: 1.8rem;
@@ -246,17 +241,209 @@ body {
     scale: 0.9;
 }
 
-
 .sidebar  p {
     color: white;
     font-size: 1.2rem;
     font-weight: 900;
 }
 
-
-
-
 .content {
-    background-color: slateblue;
+    background-color: var(--grey-color);
     grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    gap: 30px;
+    padding: 30px;
+}
+
+.content .projects-container {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.content .projects-container > p {
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.content .projects-container .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-rows: repeat(auto-fit, 225px);
+    gap: 30px;
+}
+
+.content .projects-container .grid .card {
+    background-color: var(--white-color);
+    border-radius: 10px;
+    border-left: 7px solid #f0b429;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:10px;
+    padding: 30px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: all 100ms ease-in-out;
+}
+
+.content .projects-container .grid .card:hover {
+    scale: 1.05;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.content .projects-container .grid .paragraphs .title {
+    font-weight: 900;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.content .projects-container .grid .card .icons-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.content .projects-container .grid .card .icons-container .icon{
+    width: 25px;
+    height: 25px;
+    transition: all 400ms ease-in-out;
+}
+
+.content .projects-container .grid .card .icons-container .icon:hover{
+    rotate: 360deg;
+    scale: 1.8;
+}
+
+.content .projects-container .grid .card .icons-container .icon:first-child:hover {
+    fill: #ffd500;
+}
+
+.content .projects-container .grid .card .icons-container .icon:nth-child(2n):hover {
+    fill: #9f86c0;    
+}
+
+.content .projects-container .grid .card .icons-container .icon:last-child:hover {
+    fill: #70d6ff;
+}
+
+.content .grid-sidebar {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .grid-sidebar .announcements {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.content .grid-sidebar .announcements .container {
+    background-color: white;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+}
+
+.content .grid-sidebar .announcements .container div.separator {
+    height: 1px;
+    background-color: lightgrey;
+}
+
+.content .grid-sidebar .announcements > p {
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.content .grid-sidebar p.title {
+    margin: 10px 0;
+    font-size: 0.9rem;
+    font-weight: 900;
+}
+
+.content .grid-sidebar p.message {
+    font-size: 0.8rem;
+    color: var(--light-font-color);
+    line-height: 12px;
+
+}
+
+.content .trending {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+
+}
+
+.content .trending > p {
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.content .trending .container {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.content .trending .container .user {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 20px;
+    transition: all 100ms ease-in-out;
+}
+
+.content .trending .container .user:hover {
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.content .trending .container .user .profile-picture {
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.content .trending .container .user:first-child .profile-picture {
+    background-image: url(images/giraffe.jpg)
+}
+
+.content .trending .container .user:nth-child(2) .profile-picture {
+    background-image: url(images/whale.jpg);
+}
+
+.content .trending .container .user:nth-child(3) .profile-picture {
+    background-image: url(images/monkey.jpg);
+}
+
+.content .trending .container .user:nth-child(4) .profile-picture {
+    background-image: url(images/panda.jpg);
+}
+
+.content .trending .container .user .paragraphs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content .trending .container .user .paragraphs .user-at {
+    font-weight: 900;
+}
+
+.content .trending .container .user .paragraphs .user-project {
+    font-size: .8rem;
 }
